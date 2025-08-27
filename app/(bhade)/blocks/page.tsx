@@ -25,7 +25,7 @@ function Blocks() {
         <tbody>
             <tr className="bg-white border-b  dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" className="px-6 py-4 font-medium text-gray-400 whitespace-nowrap">
-                    Apple MacBook Pro 17"
+                    Apple MacBook Pro 17
                 </th>
                
                 <td className="px-6 py-4">
