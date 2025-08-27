@@ -1,10 +1,18 @@
 "use client"
 import { data } from '@/constants/data'
 import { BarLegendProps, ResponsiveBar } from '@nivo/bar'
+import { useEffect, useState } from 'react';
 
 declare var window:Window;
 const ElectricityBar = () => {
-    const isSmallerScreen = window.innerWidth < 400
+      const [isSmallerScreen, setIsSmallerScreen] = useState(false)
+
+    useEffect(() => {
+        const handleResize = () => setIsSmallerScreen(window.innerWidth < 400)
+        handleResize() // set initial value
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
     const  legends: readonly BarLegendProps[] | undefined=!isSmallerScreen ?[
         {
             dataFrom: 'keys' as 'keys',
