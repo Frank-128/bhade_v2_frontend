@@ -1,13 +1,13 @@
 "use client"
 import { data } from '@/constants/data'
-import { ResponsiveBar } from '@nivo/bar'
+import { BarLegendProps, ResponsiveBar } from '@nivo/bar'
 
 declare var window:Window;
 const ElectricityBar = () => {
     const isSmallerScreen = window.innerWidth < 400
-    const  legends=!isSmallerScreen ?[
+    const  legends: readonly BarLegendProps[] | undefined=!isSmallerScreen ?[
         {
-            dataFrom: 'keys',
+            dataFrom: 'keys' as 'keys',
             anchor: 'bottom-right',
             direction: 'column',
             justify: false,
@@ -29,7 +29,7 @@ const ElectricityBar = () => {
                 }
             ]
         }
-    ]:null;
+    ]:undefined;
     return (
     <ResponsiveBar
         data={data}
