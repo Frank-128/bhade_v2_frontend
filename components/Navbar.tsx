@@ -9,10 +9,19 @@ import { sidebar_links } from "@/constants";
 import { PiSignOut } from "react-icons/pi";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import {useQuery} from '@tanstack/react-query';
+import { getMyUserDetail, getUserDetail } from "@/actions/user";
+import { Badge } from "./ui/badge";
+
 
 function Navbar() {
 
-  const pathname = usePathname()
+  const pathname = usePathname();
+  const {data} = useQuery({
+    queryKey:['userData'],
+    queryFn:()=>getMyUserDetail()
+
+  })
 
   return (
     <div className="fixed h-16 w-screen p-8 bg-[#542c88] z-50 opacity-100  flex items-center justify-between text-white shadow-md">
@@ -31,6 +40,9 @@ function Navbar() {
 
       <div className="md:flex gap-x-4 items-center hidden">
         <div className="flex gap-x-2 items-center">
+          <Badge  variant={"secondary"}>
+            <span>admin</span>
+          </Badge>
           <span className="px-2 cursor-pointer hover:scale-105 border-gray-100 rounded border-[0.4px]">
             Light
           </span>

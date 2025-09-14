@@ -3,8 +3,6 @@ import { Suspense } from "react";
 import AssetCard from "@/components/AssetCard";
 import DashboardCard from "@/components/DashboardCard";
 import ElectricityBar from "@/components/ElecticityBar";
-import { ResponsiveBar } from "@nivo/bar";
-import Image from "next/image";
 import { FaAngleDown } from "react-icons/fa";
 import { FaBed, FaBuilding } from "react-icons/fa6";
 
@@ -15,6 +13,7 @@ import { recent } from "@/constants/data";
 import PieChart from "@/components/PieChart";
 
 export default function Home() {
+
   return (
     <main className="flex-col flex  gap-5">
       {/* top bar in the dashboard */}
