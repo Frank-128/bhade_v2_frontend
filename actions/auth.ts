@@ -7,7 +7,7 @@ type DataProp = {
 
 export const signin = async (data: DataProp) => {
   try {
-    const res = await fetch(`${process.env.FRONTEND_URL}/api/login`, {
+    const res = await fetch(`/api/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
