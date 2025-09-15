@@ -32,7 +32,7 @@ export async function middleware(req: NextRequest) {
   if (refresh) {
     try {
       const res = await fetch(
-        `${process.env.DJANGO_API_URL}/api/token/refresh/`,
+        `${process.env.BACKEND_URL}/api/token/refresh/`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
