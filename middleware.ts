@@ -71,7 +71,7 @@ export const config = {
     "/electricity",
     "/payments",
     "/reports",
-    "/rooms",
+    "/property",
     "/tenants",
     "/water",
   ],

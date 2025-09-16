@@ -9,7 +9,7 @@ function Blocks() {
     const {data,isLoading} = useQuery({
         queryKey:['blocks'],
         queryFn:()=>getBlocks()
-    })
+    });
 
   return (
     <div className="space-y-2">

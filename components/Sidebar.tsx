@@ -15,7 +15,7 @@ function Sidebar() {
         
         <div className="flex flex-col items-center gap-x-3 gap-y-4 px-3 py-6">
         {sidebar_links.map((item, i) => (
-        <Link key={i} className={`flex  items-center justify-center self-center  w-full ${pathname === (item.link) || pathname.split('/')[1] === item.link.split('/')[1] ? "text-[#711966] border-[#711966] border-[0.2px] rounded-lg" :""}`} href={item.link}>
+        <Link key={i} className={`flex  items-center justify-center self-center  w-full ${pathname === (item.link) || pathname.split('/')[1] === item.link.split('/')[1] ? "text-[#711966]  rounded-lg" :""}`} href={item.link}>
           <div className='flex flex-start py-2 items-center w-1/2 gap-2'>
           {React.createElement(item.icon)}
             

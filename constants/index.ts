@@ -25,8 +25,8 @@ export const sidebar_links :SideBarProps[] = [
         icon:HiOutlineBuildingOffice2 
     },
     {
-        link:"/rooms",
-        name:"Rooms",
+        link:"/property",
+        name:"Property",
         icon:MdBedroomParent 
     },
     {

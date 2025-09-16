@@ -1,23 +1,27 @@
+"use client"
+import { getProperties } from "@/actions/property";
+import { AddProperty } from "@/components/property/CreateProperty";
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
-function Rooms() {
+function Property() {
+  const {data:propertyData,isFetching} = useQuery({
+    queryKey:['properties'],
+    queryFn:()=>getProperties()
+  })
+   
   return (
     <div>
       <div className="flex justify-between px-2">
-      <button
-        type="button"
-        className="py-2.5 px-5 me-2 mb-2 text-sm font-medium  focus:outline-none  rounded-lg border border-gray-200 hover:opacity-70 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 bg-[#542c88] text-gray-200 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-      >
-        Add room
-      </button>
+      <AddProperty/>
       <button className="border-gray-200 border-[0.4px]">Download csv</button>
       </div>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-200 dark:text-gray-400">
             <tr>
               <th scope="col" className="px-6 py-3">
-                Room number
+                Property number
               </th>
               <th scope="col" className="px-6 py-3">
                 <div className="flex items-center">
@@ -73,15 +77,15 @@ function Rooms() {
             </tr>
           </thead>
           <tbody>
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+           {isFetching?"Loading":propertyData.map((item:any,idx:number)=> <tr key={item.idx} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
               <th
                 scope="row"
                 className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
               >
-                Apple MacBook Pro 17
+                {item.name}
               </th>
-              <td className="px-6 py-4">Silver</td>
-              <td className="px-6 py-4">Laptop</td>
+              <td className="px-6 py-4">{item.property_no}</td>
+              <td className="px-6 py-4">{item.type}</td>
               <td className="px-6 py-4">$2999</td>
               <td className="px-6 py-4 text-right">
                 <a
@@ -91,45 +95,8 @@ function Rooms() {
                   Edit
                 </a>
               </td>
-            </tr>
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-              <th
-                scope="row"
-                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-              >
-                Microsoft Surface Pro
-              </th>
-              <td className="px-6 py-4">White</td>
-              <td className="px-6 py-4">Laptop PC</td>
-              <td className="px-6 py-4">$1999</td>
-              <td className="px-6 py-4 text-right">
-                <a
-                  href="#"
-                  className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                >
-                  Edit
-                </a>
-              </td>
-            </tr>
-            <tr className="bg-white dark:bg-gray-800">
-              <th
-                scope="row"
-                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-              >
-                Magic Mouse 2
-              </th>
-              <td className="px-6 py-4">Black</td>
-              <td className="px-6 py-4">Accessories</td>
-              <td className="px-6 py-4">$99</td>
-              <td className="px-6 py-4 text-right">
-                <a
-                  href="#"
-                  className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                >
-                  Edit
-                </a>
-              </td>
-            </tr>
+            </tr>)}
+            
           </tbody>
         </table>
       </div>
@@ -137,4 +104,4 @@ function Rooms() {
   );
 }
 
-export default Rooms;
+export default Property;
